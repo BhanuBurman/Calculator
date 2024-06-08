@@ -3,6 +3,24 @@ import './calculator.scss'
 const Calculator = () => {
     const [query, setQuery] = useState('00')
     const [result, setResult] = useState('null')
+    const calculate = (e) => {
+      // console.log(e);
+      const value = e.target.innerText;
+       if(value== 'AC'){
+           setQuery('00')
+           setResult('null')
+       }else if(value === 'DEL'){
+           setQuery(query.slice(0, -1))
+       }else if(value === '='){
+           setResult(eval(query))
+       }else{
+           if(query === '00'){
+               setQuery(value)
+           }else{
+               setQuery(query + value)
+           }
+       }
+    }
   return (
     <div className='container'>
         <div className="overlay"></div>
@@ -14,26 +32,26 @@ const Calculator = () => {
             )}
         </div>
         <div className="buttons-grid">
-            <button className='primary-button'>AC</button>
-            <button className='primary-button'>DEL</button>
-            <button className='primary-button'>%</button>
-            <button className='primary-button'>/</button>
-            <button className='secondary-button'>1</button>
-            <button className='secondary-button'>2</button>
-            <button className='secondary-button'>3</button>
-            <button className='primary-button'>x</button>
-            <button className='secondary-button'>4</button>
-            <button className='secondary-button'>5</button>
-            <button className='secondary-button'>6</button>
-            <button className='primary-button'>+</button>
-            <button className='secondary-button'>7</button>
-            <button className='secondary-button'>8</button>
-            <button className='secondary-button'>9</button>
-            <button className='primary-button'>-</button>
-            <button className='secondary-button'>00</button>
-            <button className='secondary-button'>0</button>
-            <button className='secondary-button'>.</button>
-            <button className='main-button'>=</button>
+            <button className='primary-button'  onClick={calculate}>AC</button>
+            <button className='primary-button' onClick={calculate}>DEL</button>
+            <button className='primary-button' onClick={calculate}>%</button>
+            <button className='primary-button' onClick={calculate}>/</button>
+            <button className='secondary-button' onClick={calculate}>1</button>
+            <button className='secondary-button' onClick={calculate}>2</button>
+            <button className='secondary-button' onClick={calculate}>3</button>
+            <button className='primary-button' onClick={calculate}>*</button>
+            <button className='secondary-button' onClick={calculate}>4</button>
+            <button className='secondary-button' onClick={calculate}>5</button>
+            <button className='secondary-button' onClick={calculate}>6</button>
+            <button className='primary-button' onClick={calculate}>+</button>
+            <button className='secondary-button' onClick={calculate}>7</button>
+            <button className='secondary-button' onClick={calculate}>8</button>
+            <button className='secondary-button' onClick={calculate}>9</button>
+            <button className='primary-button' onClick={calculate}>-</button>
+            <button className='secondary-button' onClick={calculate}>00</button>
+            <button className='secondary-button' onClick={calculate}>0</button>
+            <button className='secondary-button' onClick={calculate}>.</button>
+            <button className='main-button' onClick={calculate}>=</button>
         </div>
       </div>
     </div>
