@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import './calculator.scss'
 const Calculator = () => {
     const [query, setQuery] = useState('00')
-    const [result, setResult] = useState('null')
+    const [result, setResult] = useState('00')
     const [fontSize, setFontSize] = useState('45px')
     const [color, setColor] = useState('white')
+    const [opacity, setOpacity] = useState('0')
+    const [size, setSize] = useState('0px')
     const style = {
       "fontSize":fontSize, 
       "color":color, 
@@ -23,8 +25,10 @@ const Calculator = () => {
       if(fontSize !== '45px'){
         setFontSize('45px');
       }
-      if(result !== 'null'){
-        setResult('null');
+      if(result !== '00'){
+        // setResult('00');
+        setOpacity('0');
+        setSize('0px');
       }
       if(query.length > 7 && query.length <= 12){
         setFontSize('40px');
@@ -45,9 +49,10 @@ const Calculator = () => {
           setColor('white');
           setFontSize('45px');
           setQuery('00')
-          setResult('null')
         }else if(value === '='){
           try{
+            setOpacity('1');
+            setSize('45px');
             setResult(eval(query))
             setColor('gray');
             setFontSize('20px');
@@ -70,9 +75,7 @@ const Calculator = () => {
       <div className="calcCard">
         <div className="display">
             <div className="query" style={style}>{query}</div>
-            {result !== 'null'&& (
-                <div className="result">{result}</div>
-            )}
+            <div className="result" style={{opacity:opacity, fontSize: size}}>{result}</div>
         </div>
         <div className="buttons-grid">
             <button className='primary-button'  onClick={calculate}>AC</button>
