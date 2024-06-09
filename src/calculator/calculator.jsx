@@ -20,6 +20,9 @@ const Calculator = () => {
       if(color === 'gray') {
         setColor('white');
       }
+      if(fontSize !== '45px'){
+        setFontSize('45px');
+      }
       if(result !== 'null'){
         setResult('null');
       }
@@ -44,9 +47,13 @@ const Calculator = () => {
           setQuery('00')
           setResult('null')
         }else if(value === '='){
+          try{
+            setResult(eval(query))
             setColor('gray');
             setFontSize('20px');
-            setResult(eval(query))
+            }catch(e){
+              alert("Invalid operation!")
+            }
         }else{
           if(query === '00'){
               setQuery(value)
