@@ -45,7 +45,7 @@ const Calculator = () => {
       else if(query.length > 30){
         alert('Please enter smaller query!');
       }else{
-        if(value== 'AC'){
+        if(value=== 'AC'){
           setColor('white');
           setFontSize('45px');
           setQuery('00')
@@ -71,7 +71,9 @@ const Calculator = () => {
     }
   return (
     <div className='container'>
-        <div className="overlay"></div>
+      <div className="myname">
+        made by Bhanu
+      </div>
       <div className="calcCard">
         <div className="display">
             <div className="query" style={style}>{query}</div>
